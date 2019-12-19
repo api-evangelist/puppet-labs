@@ -1,0 +1,48 @@
+{
+    "name": "Puppet Labs",
+    "description": "Automatically deliver and operate all of your software across its entire lifecycle ??? simply, securely and at scale ??? with Puppet's modern automation. With Puppet, the technology is finally here to enable you to automate across your entire enterprise. S...",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1469-puppet-labs.jpg",
+    "tags": [
+        "have api",
+        "orchestration"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/puppet-labs\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [],
+    "x-common": [
+        {
+            "type": "Blog",
+            "url": "http:\/\/puppetlabs.com\/blog\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/feeds.feedburner.com\/PuppetLabs"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/puppet-labs"
+        },
+        {
+            "type": "Documentation",
+            "url": "https:\/\/forgeapi.puppetlabs.com\/"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/puppetlabs"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/puppetize"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/puppetlabs"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/puppetlabs.com\/"
+        }
+    ]
+}
