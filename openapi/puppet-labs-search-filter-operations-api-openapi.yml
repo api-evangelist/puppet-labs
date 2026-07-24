@@ -1,0 +1,337 @@
+openapi: 3.0.2
+info:
+  title: Puppet Forge v3 Module Operations Search Filter Operations API
+  version: '29'
+  description: "## Introduction\nThe Puppet Forge API (hereafter referred to as the Forge API) provides quick access to all the\ndata on the Puppet Forge via a RESTful interface. Using the Forge API, you can write scripts and\ntools that interact with the Puppet Forge website.\n\nThe Forge API's current version is `v3`. It is considered regression-stable, meaning that the returned\ndata is guaranteed to include the fields described in the schemas on this page; however, additional data\nmight be added in the future and clients must ignore any properties they do not recognize.\n\n## OpenAPI Specification\nThe Puppet Forge v3 API is described by an\n[OpenAPI 3.0](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.0.md) formatted\nspecification file. The most up-to-date version of this specification file can be accessed at\n[https://forgeapi.puppet.com/v3/openapi.json](/v3/openapi.json).\n\n## Features\n* The API is accessed over HTTPS via either the `forgeapi.puppet.com` (IPv4 or IPv6). All data is returned in JSON\n  format.\n* Blank fields are included as `null`.\n* Nested resources may use an abbreviated representation. A link to the full representation for the\n  resource is always included.\n* All timestamps in JSON responses are returned in ISO 8601 format: `YYYY-MM-DD HH:MM:SS ±HHMM`.\n* The HTTP response headers include caching hints for conditional requests.\n\n## Concepts and Terminology\n* **Module**: Modules are self-contained bundles of code and data with a specific directory structure. Modules are identified by a combination of the author's username and the module's name, separated by a hyphen. For example: `puppetlabs-apache`\n* **Release**: A single, specific version of a module is called a Release. Releases are identified by a combination of the module identifier (see above) and the Release version, separated by a hyphen. For example: `puppetlabs-apache-4.0.0`\n\n## Errors\nThe Puppet Forge API follows [RFC 2616](https://tools.ietf.org/html/rfc2616) and\n[RFC 6585](https://tools.ietf.org/html/rfc6585).\n\nError responses are served with a `4xx` or `5xx` status code, and are sent as a JSON document with a content type\nof `application/json`. The error document contains the following top-level keys and values:\n\n  * `message`: a string value that summarizes the problem\n  * `errors`: a list (array) of strings containing additional details describing the underlying cause(s) of the\n    failure\n\nAn example error response is shown below:\n\n```json\n{\n  \"message\": \"400 Bad Request\",\n  \"errors\": [\n    \"Cannot parse request body as JSON\"\n  ]\n}\n```\n\n## User-Agent Required\nAll API requests must include a valid `User-Agent` header. Requests with no `User-Agent` header will\nbe rejected. The `User-Agent` header helps identify your application or library, so we can communicate\nwith you if necessary. If your use of the API is informal or personal, we recommend using your username\nas the value for the `User-Agent` header.\n\nUser-Agent headers are a list of one or more product descriptions, generally taking this form:\n\n```\n<name-without-spaces>/<version> (comments)\n```\n\nFor example, the following are all useful User-Agent values:\n\n```\nMyApplication/0.0.0 Her/0.6.8 Faraday/0.8.8 Ruby/1.9.3-p194 (i386-linux)\nMy-Library-Name/1.2.4\nmyusername\n```\n\n## Hostname Configuration\nMost tools that interact with the Forge API allow specification of the hostname to use. You can configure\na few common tools to use a specified hostname as follows:\n\nFor **Puppet Enterprise** users, in [r10k](https://puppet.com/docs/pe/latest/r10k_customize_config.html#r10k_configuring_forge_settings)\nor [Code Manager](https://puppet.com/docs/pe/latest/code_mgr_customizing.html#config_forge_settings), specify\n`forge_settings` in Hiera:\n```\npe_r10k::forge_settings:\n  baseurl: 'https://forgeapi.puppet.com'\n```\nor\n```\npuppet_enterprise::master::code_manager::forge_settings:\n  baseurl: 'https://forgeapi.puppet.com'\n```\n<br />\n\nIf you are an **open source Puppet** user using r10k, you'll need to [edit your r10k.yaml\ndirectly](https://github.com/puppetlabs/r10k/blob/main/doc/dynamic-environments/configuration.mkd#forge):\n```\nforge:\n  baseurl: 'https://forgeapi.puppet.com'\n```\nor set the appropriate class param for the [open source r10k module](https://forge.puppet.com/puppet/r10k#forge_settings):\n```\n$forge_settings = {\n  'baseurl' => 'https://forgeapi.puppet.com',\n}\n```\n<br />\n\nIn [**Bolt**](https://puppet.com/docs/bolt/latest/bolt_installing_modules.html#install-forge-modules-from-an-alternate-forge), set a `baseurl` for the Forge in `bolt-project.yaml`:\n```\nmodule-install:\n  forge:\n    baseurl: https://forgeapi.puppet.com\n```\n<br />\n\nUsing `puppet config`:\n```\n$ puppet config set module_repository https://forgeapi.puppet.com\n```\n"
+servers:
+- url: https://forgeapi.puppet.com
+tags:
+- name: Search Filter Operations
+paths:
+  /v3/search_filters:
+    post:
+      operationId: addSearchFilter
+      summary: Create search filter
+      description: 'Create a new search filter for the authenticated user.
+
+        '
+      tags:
+      - Search Filter Operations
+      parameters:
+      - in: query
+        name: search_filter_slug
+        schema:
+          type: string
+          pattern: ^[a-zA-Z0-9]+[-\/][a-z][a-z0-9_]*$
+        required: true
+        description: 'Publish a new search filter for logged-in user
+
+          '
+        example: apache,supported,linux
+      - $ref: '#/components/parameters/withHTML'
+      - $ref: '#/components/parameters/includeFields'
+      - $ref: '#/components/parameters/excludeFields'
+      - $ref: '#/components/parameters/ifModifiedSince'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchFilter'
+        '304':
+          $ref: '#/components/responses/NotModified'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+    get:
+      operationId: getUserSearchFilters
+      summary: Get user's search filters
+      description: Retrieve all search filters for the authenticated user.
+      tags:
+      - Search Filter Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchFilterResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /v3/search_filters/{id}:
+    delete:
+      summary: Delete search filter by ID
+      description: Delete user's search filter by ID for authenticated user
+      operationId: deleteUserSearchFilter
+      tags:
+      - Search Filter Operations
+      security:
+      - ApiKeyAuth: []
+      parameters:
+      - in: path
+        name: id
+        description: Search filter ID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No Content
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    includeFields:
+      in: query
+      name: include_fields
+      description: List of top level keys to include in response object, only applies to fields marked 'optional'
+      schema:
+        type: array
+        items:
+          type: string
+      style: spaceDelimited
+      explode: false
+      example:
+      - docs
+    excludeFields:
+      in: query
+      name: exclude_fields
+      description: List of top level keys to exclude from response object
+      schema:
+        type: array
+        items:
+          type: string
+      style: spaceDelimited
+      explode: false
+      example:
+      - readme
+      - changelog
+      - license
+      - reference
+    ifModifiedSince:
+      in: header
+      name: If-Modified-Since
+      schema:
+        type: string
+        format: rfc2616 httpdate
+        description: 'Only processes the request if the resource or list of resources has changed since the given time,
+
+          otherwise returns a `304 Not Modified` response
+
+          '
+        example: Mon, 19 Feb 2019 10:15:08 GMT
+    withHTML:
+      in: query
+      name: with_html
+      description: Render markdown files (README, REFERENCE, etc.) to HTML before returning results
+      schema:
+        type: boolean
+  responses:
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: 403 Forbidden
+              errors:
+                type: array
+                items:
+                  type: string
+                example:
+                - The provided API key is invalid or has insufficient permissions for the requested operation
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: 400 Bad Request
+              errors:
+                type: array
+                items:
+                  type: string
+                example:
+                - '''puppetlabs-apache4.5.0'' is not a valid release slug'
+    NotModified:
+      description: Not Modified
+      headers:
+        Last-Modified:
+          schema:
+            type: string
+            format: rfc2616 httpdate
+            description: Date and time that this response last changed
+            example: Mon, 19 Feb 2019 10:15:08 GMT
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: 404 Not Found
+              errors:
+                type: array
+                items:
+                  type: string
+                example:
+                - The requested resource could not be found
+    Conflict:
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: 409 Conflict
+              errors:
+                type: array
+                items:
+                  type: string
+                example:
+                - A release with the version specified in the metadata.json already exists for this module.
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: 401 Unauthorized
+              errors:
+                type: array
+                items:
+                  type: string
+                example:
+                - This endpoint requires a valid Authorization header
+  schemas:
+    SearchFilterResponse:
+      type: object
+      properties:
+        user_search_filters:
+          type: array
+          description: The array of user search filter.
+          items:
+            $ref: '#/components/schemas/SearchFilter'
+      example:
+        user_search_filters:
+        - id: 1
+          filter:
+            keyword: apache
+            features:
+              premium: true
+              with_pdk: null
+              with_tasks: null
+            endorsements:
+              partner: true
+              approved: null
+              supported: null
+            compatibility:
+              pe_requirement: '2023.1'
+              operating_system: Windows
+              puppet_requirement: '8.0'
+              operating_system_release: '2019'
+            with_minimum_score: '80'
+            release_within: 1year
+          active: true
+          created_at: 2023-11-28 17:51:53 +0530
+        - id: 2
+          filter:
+            keyword: sql
+            features:
+              premium: true
+              with_pdk: null
+              with_tasks: null
+            endorsements:
+              partner: true
+              approved: null
+              supported: null
+            compatibility:
+              pe_requirement: '2023.1'
+              operating_system: Windows
+              puppet_requirement: '8.0'
+              operating_system_release: '2019'
+            with_minimum_score: '80'
+            release_within: 1year
+          active: true
+          created_at: 2023-11-28 17:51:53 +0530
+    SearchFilter:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier for the search filter.
+        filter:
+          type: object
+          description: The hash definining the search filter criteria.
+        active:
+          type: boolean
+          description: Indicates whether the search filter is active.
+          default: false
+        created_at:
+          type: string
+          description: The timestamp indicating when the search filter was created.
+      example:
+        id: 1
+        filter:
+          keyword: apache
+          features:
+            premium: true
+            with_pdk: null
+            with_tasks: null
+          endorsements:
+            partner: true
+            approved: null
+            supported: null
+          compatibility:
+            pe_requirement: '2023.1'
+            operating_system: Windows
+            puppet_requirement: '8.0'
+            operating_system_release: '2019'
+          with_minimum_score: '80'
+          release_within: 1year
+        active: true
+        created_at: 2023-11-28 17:51:53 +0530
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: 'Authorization: Bearer <api_key>'
+      description: 'Some of the Forge API endpoints require authentication in the form of a user API key. API keys may be created and revoked from a user''s profile on the [Forge website](https://forge.puppet.com), where other profile details are managed.
+
+
+        To perform actions that require API key authentication, the key must be present in an `Authorization` header with the request. The header should be formatted as:
+
+
+        ```
+
+        Authorization: Bearer <api_key>
+
+        ```
+
+
+        If a request is made to a protected endpoint without the required `Authorization` header a `401 Unauthorized` response will be returned. If an `Authorization` header is sent with the request, but the provided key is invalid or has insufficent permissions a `403 Forbidden` response will be returned.
+
+        '
