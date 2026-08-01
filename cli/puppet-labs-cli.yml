@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: searched
+source: https://help.puppet.com/
+note: >-
+  Puppet ships several first-party command-line tools. `puppet module` is the CLI surface that
+  interacts directly with the Puppet Forge (search/install/upgrade modules); pdk builds and
+  publishes Forge modules; bolt runs tasks and plans.
+clis:
+- name: puppet
+  install:
+  - gem install puppet
+  package: packages/puppet-labs-packages.yml
+  forge_commands:
+  - command: puppet module install <owner>-<module>
+    description: Install a module (and its dependencies) from the Forge.
+  - command: puppet module search <term>
+    description: Search the Forge for modules.
+  - command: puppet module upgrade <owner>-<module>
+    description: Upgrade an installed module to the latest Forge release.
+  - command: puppet module list
+    description: List installed modules.
+- name: pdk
+  install:
+  - gem install pdk
+  package: packages/puppet-labs-packages.yml
+  command_groups:
+  - pdk new (module/class/task/provider)
+  - pdk build
+  - pdk test unit
+  - pdk release (publishes to the Forge)
+- name: bolt
+  install:
+  - gem install bolt
+  package: packages/puppet-labs-packages.yml
+  command_groups:
+  - bolt command run
+  - bolt task run
+  - bolt plan run
+  - bolt module install

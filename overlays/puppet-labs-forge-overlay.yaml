@@ -1,0 +1,19 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Puppet Forge v3 API
+  version: 1.0.0
+extends: openapi/puppet-labs-forge-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: puppet-labs
+    x-apievangelist-artifacts:
+      authentication: authentication/puppet-labs-authentication.yml
+      errors: errors/puppet-labs-problem-types.yml
+      conventions: conventions/puppet-labs-conventions.yml
+      data-model: data-model/puppet-labs-data-model.yml
+      packages: packages/puppet-labs-packages.yml
+- target: $.info
+  update:
+    x-apievangelist-auth-model: api-key-bearer
+    x-apievangelist-pagination: limit-offset

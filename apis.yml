@@ -1,27 +1,185 @@
 aid: puppet-labs
-name: Puppet Labs *
-description: 'Puppet Labs * is a company surfaced as a portfolio company of gv and added to the API Evangelist
-  network as a stub for enrichment. Sector: enterprise. This profile is a lead awaiting the enrichment
-  pipeline.'
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/puppet-labs.png
+name: Puppet
+description: >-
+  Puppet (Perforce Puppet, formerly Puppet Labs) is an infrastructure automation and
+  configuration-management platform used by more than 40,000 organizations to manage servers,
+  networks, cloud, and edge infrastructure through desired-state, policy-driven automation. Its
+  products include Puppet Enterprise, Puppet Core, the Bolt orchestration tool, and the Puppet
+  Forge module registry. The public Puppet Forge v3 API provides RESTful access to the modules,
+  releases, users, and release plans published on Forge; Puppet Enterprise additionally exposes
+  REST APIs for orchestration, node classification, RBAC, and PuppetDB querying. Puppet was
+  acquired by Perforce Software in 2022.
 url: https://raw.githubusercontent.com/api-evangelist/puppet-labs/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - gv
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-public-api-surface
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v1
 tags:
 - Company
 - Enterprise
-apis: []
+- Infrastructure Automation
+- Configuration Management
+- DevOps
+- Module Registry
+- Compliance
+apis:
+- aid: puppet-labs:puppet-labs-module-operations-api
+  name: Puppet Module Operations API
+  description: The Module Operations API from Puppet — 2 operation(s) for module operations.
+  humanURL: https://forgeapi.puppet.com/
+  baseURL: https://forgeapi.puppet.com
+  tags:
+  - Module Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/puppet-labs-module-operations-api-openapi.yml
+  - type: Authentication
+    url: authentication/puppet-labs-authentication.yml
+  - type: ErrorCatalog
+    url: errors/puppet-labs-problem-types.yml
+  - type: Conventions
+    url: conventions/puppet-labs-conventions.yml
+  - type: DataModel
+    url: data-model/puppet-labs-data-model.yml
+  - type: Conformance
+    url: conformance/puppet-labs-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/puppet-labs-lifecycle.yml
+- aid: puppet-labs:puppet-labs-release-operations-api
+  name: Puppet Release Operations API
+  description: The Release Operations API from Puppet — 5 operation(s) for release operations.
+  humanURL: https://forgeapi.puppet.com/
+  baseURL: https://forgeapi.puppet.com
+  tags:
+  - Release Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/puppet-labs-release-operations-api-openapi.yml
+  - type: Authentication
+    url: authentication/puppet-labs-authentication.yml
+  - type: ErrorCatalog
+    url: errors/puppet-labs-problem-types.yml
+  - type: Conventions
+    url: conventions/puppet-labs-conventions.yml
+  - type: DataModel
+    url: data-model/puppet-labs-data-model.yml
+  - type: Conformance
+    url: conformance/puppet-labs-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/puppet-labs-lifecycle.yml
+- aid: puppet-labs:puppet-labs-search-filter-operations-api
+  name: Puppet Search Filter Operations API
+  description: >-
+    The Search Filter Operations API from Puppet — 2 operation(s) for search filter operations.
+  humanURL: https://forgeapi.puppet.com/
+  baseURL: https://forgeapi.puppet.com
+  tags:
+  - Search Filter Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/puppet-labs-search-filter-operations-api-openapi.yml
+  - type: Authentication
+    url: authentication/puppet-labs-authentication.yml
+  - type: ErrorCatalog
+    url: errors/puppet-labs-problem-types.yml
+  - type: Conventions
+    url: conventions/puppet-labs-conventions.yml
+  - type: DataModel
+    url: data-model/puppet-labs-data-model.yml
+  - type: Conformance
+    url: conformance/puppet-labs-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/puppet-labs-lifecycle.yml
+- aid: puppet-labs:puppet-labs-user-operations-api
+  name: Puppet User Operations API
+  description: The User Operations API from Puppet — 2 operation(s) for user operations.
+  humanURL: https://forgeapi.puppet.com/
+  baseURL: https://forgeapi.puppet.com
+  tags:
+  - User Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/puppet-labs-user-operations-api-openapi.yml
+  - type: Authentication
+    url: authentication/puppet-labs-authentication.yml
+  - type: ErrorCatalog
+    url: errors/puppet-labs-problem-types.yml
+  - type: Conventions
+    url: conventions/puppet-labs-conventions.yml
+  - type: DataModel
+    url: data-model/puppet-labs-data-model.yml
+  - type: Conformance
+    url: conformance/puppet-labs-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/puppet-labs-lifecycle.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: VulnerabilityDisclosure
+  url: security/puppet-labs-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/puppet-labs-domain-security.yml
 - type: Website
-  url: http://puppetlabs.com
+  url: https://www.puppet.com
+- type: DeveloperPortal
+  url: https://help.puppet.com/
+- type: Documentation
+  url: https://help.puppet.com/
+- type: APIReference
+  url: https://forgeapi.puppet.com/
+- type: Forge
+  url: https://forge.puppet.com/
+- type: Blog
+  url: https://www.puppet.com/blog
+- type: GitHubOrganization
+  url: https://github.com/puppetlabs
+- type: Support
+  url: https://portal.perforce.com/s/product/a3g4X000009wMFBQA2/puppet
+- type: Community
+  url: https://www.puppet.com/community
+- type: Pricing
+  url: https://www.puppet.com/pricing
+- type: TermsOfService
+  url: https://www.perforce.com/website-terms-use
+- type: PrivacyPolicy
+  url: https://www.perforce.com/privacy-policy
+- type: TrustCenter
+  url: https://trust.perforce.com/
+- type: Security
+  url: https://www.puppet.com/security
+- type: LLMsTxt
+  url: llms/puppet-labs-llms.txt
+- type: Packages
+  url: packages/puppet-labs-packages.yml
+- type: SDKs
+  url: packages/puppet-labs-packages.yml
+- type: CLI
+  url: cli/puppet-labs-cli.yml
+- type: AgentSkill
+  url: skills/_index.yml

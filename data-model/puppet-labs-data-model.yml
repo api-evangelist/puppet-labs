@@ -1,0 +1,54 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/puppet-labs-forge-openapi-original.json
+description: >-
+  Entity-relationship graph for the Puppet Forge v3 API, derived from the OpenAPI component schemas
+  and the resource slug conventions used across the /v3 paths.
+entities:
+- name: Module
+  slug_format: "<owner_username>-<module_name>"
+  description: A published Puppet module (e.g. puppetlabs-apache).
+  key_fields: [slug, name, owner, current_release, releases]
+- name: Release
+  slug_format: "<owner>-<module>-<version>"
+  description: A specific published version of a module, including metadata and the download file.
+  key_fields: [slug, version, module, file_uri, metadata]
+- name: ReleasePlan
+  description: A Bolt plan shipped inside a module release.
+  key_fields: [name, release]
+- name: User
+  slug_format: "<username>"
+  description: A Forge account that owns modules and releases.
+  key_fields: [slug, username, module_count, release_count]
+- name: SearchFilter
+  description: A saved search filter belonging to an authenticated user.
+  key_fields: [id, user]
+relationships:
+- from: Module
+  to: User
+  type: belongs_to
+  via: owner
+- from: Module
+  to: Release
+  type: has_many
+  via: releases
+- from: Module
+  to: Release
+  type: has_one
+  via: current_release
+- from: Release
+  to: Module
+  type: belongs_to
+  via: module
+- from: Release
+  to: ReleasePlan
+  type: has_many
+  via: plans
+- from: User
+  to: Module
+  type: has_many
+  via: modules
+- from: SearchFilter
+  to: User
+  type: belongs_to
+  via: user

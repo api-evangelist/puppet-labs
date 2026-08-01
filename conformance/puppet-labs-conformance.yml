@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/puppet-labs-forge-openapi-original.json
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: Provider publishes an OpenAPI 3.0.2 document at https://forgeapi.puppet.com/v3/openapi.json
+- id: rest
+  conforms: true
+  evidence: Resource-oriented /v3 endpoints over HTTPS with standard HTTP verbs.
+- id: oauth2
+  conforms: false
+  evidence: Authentication is a user API key (Bearer header), not OAuth2.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Error responses use plain HTTP status codes, not application/problem+json.
+- id: pagination
+  conforms: true
+  evidence: List endpoints use limit/offset pagination with a Pagination object (first/previous/current/next/total).
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key header is documented in the spec.
+- id: api-key-auth
+  conforms: true
+  evidence: securitySchemes ApiKeyAuth (apiKey, header, Authorization Bearer).

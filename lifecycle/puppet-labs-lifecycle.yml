@@ -1,0 +1,17 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/puppet-labs-forge-openapi-original.json
+versioning:
+  scheme: uri-path
+  current: v3
+  spec_version: '29'
+  docs: https://forgeapi.puppet.com/
+deprecation:
+  resource_level: true
+  note: >-
+    Modules and releases carry deprecated_at timestamps and can be deprecated via the
+    deprecateModule (PATCH /v3/modules/{module_slug}) operation. No formal API-version sunset
+    policy or RFC 8594 Sunset/Deprecation header support is documented for the Forge API itself.
+status_page: null
+sla: null
+deprecated_operations: []

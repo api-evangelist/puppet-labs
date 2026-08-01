@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/puppet-labs-forge-openapi-original.json
+skills:
+- file: puppet-labs-find-and-download-module.md
+  name: Find and download a Puppet Forge module
+  api: openapi/puppet-labs-forge-openapi-original.json
+  operations: [getModules, getModule, getReleases, getRelease, getFile]
+- file: puppet-labs-publish-module-release.md
+  name: Publish a module release to the Forge
+  api: openapi/puppet-labs-forge-openapi-original.json
+  operations: [addRelease, getRelease, deprecateModule]

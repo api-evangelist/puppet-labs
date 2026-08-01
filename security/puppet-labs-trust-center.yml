@@ -1,0 +1,13 @@
+generated: '2026-07-20'
+method: searched
+url: https://trust.perforce.com/
+platform: Vanta
+note: >-
+  Puppet is part of Perforce Software; Perforce operates a Vanta-powered Trust Center at
+  trust.perforce.com covering its product portfolio (including Puppet). The certification list is
+  rendered client-side by Vanta and was not statically extractable during this pass, so specific
+  named certifications are not asserted here to avoid fabrication.
+certifications: []
+evidence:
+- source: https://trust.perforce.com/
+  keywords: [trust center, vanta]

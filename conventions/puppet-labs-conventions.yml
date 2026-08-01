@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/puppet-labs-forge-openapi-original.json
+authentication:
+  style: api-key
+  scheme: "Authorization: Bearer <api_key>"
+  location: header
+  note: Read endpoints are public; write endpoints (publish/deprecate/delete/search-filters) require a user API key.
+  ref: authentication/puppet-labs-authentication.yml
+pagination:
+  style: limit-offset
+  params: [limit, offset]
+  response_object: pagination
+  response_fields: [limit, offset, first, previous, current, next, total]
+sorting:
+  supported: true
+  param: sort_by
+filtering:
+  supported: true
+  note: List endpoints support query params such as query, owner, tag, module_groups, with_pdk, etc.
+idempotency:
+  supported: false
+  note: No Idempotency-Key header is documented for the Forge API.
+error_envelope:
+  style: http-status
+  problem_json: false
+  ref: errors/puppet-labs-problem-types.yml
+versioning:
+  ref: lifecycle/puppet-labs-lifecycle.yml

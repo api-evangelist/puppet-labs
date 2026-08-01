@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: searched
+source: rubygems.org
+note: >-
+  puppet_forge is the official first-party Ruby client for the Puppet Forge v3 API. The other
+  gems are Puppet's first-party CLI/tooling that interact with Forge and Puppet infrastructure.
+packages:
+- language: ruby
+  registry: rubygems
+  name: puppet_forge
+  version: 6.2.0
+  url: https://rubygems.org/gems/puppet_forge
+  source: https://github.com/puppetlabs/forge-ruby
+  install: gem install puppet_forge
+  description: Ruby client to access Forge API information on Modules, Users, and Releases.
+  official: true
+  sdk_for: openapi/puppet-labs-forge-openapi-original.json
+- language: ruby
+  registry: rubygems
+  name: puppet
+  version: 8.10.0
+  url: https://rubygems.org/gems/puppet
+  install: gem install puppet
+  description: Puppet agent and configuration-management engine; `puppet module` installs from Forge.
+  official: true
+- language: ruby
+  registry: rubygems
+  name: pdk
+  version: 3.4.0
+  url: https://rubygems.org/gems/pdk
+  install: gem install pdk
+  description: Puppet Development Kit for building, testing, and publishing Forge modules.
+  official: true
+- language: ruby
+  registry: rubygems
+  name: bolt
+  version: 4.0.0
+  url: https://rubygems.org/gems/bolt
+  install: gem install bolt
+  description: Puppet Bolt orchestration tool for running tasks and plans across infrastructure.
+  official: true

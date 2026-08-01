@@ -1,0 +1,58 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/puppet-labs-forge-openapi-original.json
+server:
+  name: puppet-forge
+  transport: stdio
+note: Candidate tool list derived from Puppet Forge v3 API operations; no official hosted MCP server was
+  found.
+tools:
+- name: getFile
+  description: Download module release
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#getFile
+- name: getModules
+  description: List modules
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#getModules
+- name: addSearchFilter
+  description: Create search filter
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#addSearchFilter
+- name: getUserSearchFilters
+  description: Get user's search filters
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#getUserSearchFilters
+- name: deleteUserSearchFilter
+  description: Delete search filter by ID
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#deleteUserSearchFilter
+- name: getModule
+  description: Fetch module
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#getModule
+- name: deprecateModule
+  description: Deprecate module
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#deprecateModule
+- name: deleteModule
+  description: Delete module
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#deleteModule
+- name: getReleases
+  description: List module releases
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#getReleases
+- name: addRelease
+  description: Create module release
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#addRelease
+- name: getRelease
+  description: Fetch module release
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#getRelease
+- name: deleteRelease
+  description: Delete module release
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#deleteRelease
+- name: getReleasePlans
+  description: List module release plans
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#getReleasePlans
+- name: getReleasePlan
+  description: Fetch module release plan
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#getReleasePlan
+- name: getUsers
+  description: List users
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#getUsers
+- name: getUser
+  description: Fetch user
+  source_operation: openapi/puppet-labs-forge-openapi-original.json#getUser

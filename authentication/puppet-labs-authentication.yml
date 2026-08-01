@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/puppet-labs-forge-openapi-original.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: 'Authorization: Bearer <api_key>'
+  description: |-
+    Some of the Forge API endpoints require authentication in the form of a user API key. API keys may be created and revoked from a user's profile on the [Forge website](https://forge.puppet.com), where other profile details are managed.
+
+    To perform actions that require API key authentication, the key must be present in an `Authorization` header with the request. The header should be formatted as:
+
+    `
+  sources:
+  - openapi/puppet-labs-forge-openapi-original.json

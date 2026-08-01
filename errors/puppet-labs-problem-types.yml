@@ -1,0 +1,63 @@
+generated: '2026-07-20'
+method: derived
+format: plain
+source: openapi/puppet-labs-forge-openapi-original.json
+note: Forge API returns standard HTTP status codes; responses are not application/problem+json (RFC 9457).
+  401 = missing key, 403 = invalid/insufficient key.
+problems:
+- status: 400
+  title: Bad Request
+  remediation: Check request parameters and body against the schema.
+  operations:
+  - addRelease
+  - addSearchFilter
+  - deleteModule
+  - deleteRelease
+  - deprecateModule
+  - getFile
+  - getModule
+  - getModules
+  - getRelease
+  - getUser
+  - getUserSearchFilters
+- status: 401
+  title: Unauthorized
+  remediation: 'Provide a valid Authorization: Bearer <api_key> header.'
+  operations:
+  - addRelease
+  - deleteModule
+  - deleteRelease
+  - deprecateModule
+  - getUserSearchFilters
+- status: 403
+  title: Forbidden
+  remediation: The API key is valid but lacks permission for this resource.
+  operations:
+  - addRelease
+  - deleteModule
+  - deleteRelease
+  - deleteUserSearchFilter
+  - deprecateModule
+- status: 404
+  title: Not Found
+  remediation: The requested module, release, user, or filter does not exist.
+  operations:
+  - addSearchFilter
+  - deleteModule
+  - deleteRelease
+  - deleteUserSearchFilter
+  - deprecateModule
+  - getFile
+  - getModule
+  - getModules
+  - getRelease
+  - getReleasePlan
+  - getReleasePlans
+  - getUser
+  - getUserSearchFilters
+- status: 409
+  title: Conflict
+  remediation: A conflicting resource already exists (e.g. duplicate release version or search filter).
+  operations:
+  - addRelease
+  - addSearchFilter
