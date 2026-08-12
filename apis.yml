@@ -141,6 +141,10 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: MCPServer
+  url: mcp/puppet-labs-mcp.yml
+- type: Overlay
+  url: overlays/puppet-labs-forge-overlay.yaml
 - type: VulnerabilityDisclosure
   url: security/puppet-labs-vulnerability-disclosure.yml
 - type: DomainSecurity
