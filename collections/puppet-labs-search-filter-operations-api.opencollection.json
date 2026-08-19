@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Puppet Forge v3 Module Operations Search Filter Operations API",
+    "version": "29"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search Filter Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user's search filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://forgeapi.puppet.com/v3/search_filters"
+          },
+          "docs": "Retrieve all search filters for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Create search filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://forgeapi.puppet.com/v3/search_filters",
+            "headers": [
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "search_filter_slug",
+                "value": "apache,supported,linux",
+                "type": "query",
+                "description": "Publish a new search filter for logged-in user\n"
+              },
+              {
+                "name": "with_html",
+                "value": "",
+                "type": "query",
+                "description": "Render markdown files (README, REFERENCE, etc.) to HTML before returning results"
+              },
+              {
+                "name": "include_fields",
+                "value": "docs",
+                "type": "query",
+                "description": "List of top level keys to include in response object, only applies to fields marked 'optional'"
+              },
+              {
+                "name": "exclude_fields",
+                "value": "readme,changelog,license,reference",
+                "type": "query",
+                "description": "List of top level keys to exclude from response object"
+              }
+            ]
+          },
+          "docs": "Create a new search filter for the authenticated user.\n"
+        },
+        {
+          "info": {
+            "name": "Delete search filter by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://forgeapi.puppet.com/v3/search_filters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Search filter ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization: Bearer <api_key>",
+              "value": "{{Authorization: Bearer <api_key>}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete user's search filter by ID for authenticated user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

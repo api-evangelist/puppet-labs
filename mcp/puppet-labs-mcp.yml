@@ -56,3 +56,9 @@ tools:
 - name: getUser
   description: Fetch user
   source_operation: openapi/puppet-labs-forge-openapi-original.json#getUser
+deployment:
+  mode: none
+  verified: derived
+  tools: 16
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -1,0 +1,792 @@
+{
+  "item": [
+    {
+      "id": "372d7e86-2cc9-43f9-8305-87a1ddc1b7a0",
+      "name": "Search Filter Operations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9801ad43-3b1d-4c27-98ed-52a926bd4bee",
+          "name": "Create search filter",
+          "request": {
+            "name": "Create search filter",
+            "description": {
+              "content": "Create a new search filter for the authenticated user.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "search_filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search_filter_slug",
+                  "value": "<string>",
+                  "description": "(Required) Publish a new search filter for logged-in user\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "with_html",
+                  "value": "<boolean>",
+                  "description": "Render markdown files (README, REFERENCE, etc.) to HTML before returning results"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>%20<string>",
+                  "description": "List of top level keys to include in response object, only applies to fields marked 'optional'"
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>%20<string>",
+                  "description": "List of top level keys to exclude from response object"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "If-Modified-Since",
+                "value": "<rfc2616 httpdate>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca95b6b7-a07d-49b5-b592-5f2413c7ed57",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search_filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search_filter_slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"filter\": {\n    \"keyword\": \"apache\",\n    \"features\": {\n      \"premium\": true,\n      \"with_pdk\": null,\n      \"with_tasks\": null\n    },\n    \"endorsements\": {\n      \"partner\": true,\n      \"approved\": null,\n      \"supported\": null\n    },\n    \"compatibility\": {\n      \"pe_requirement\": \"2023.1\",\n      \"operating_system\": \"Windows\",\n      \"puppet_requirement\": \"8.0\",\n      \"operating_system_release\": \"2019\"\n    },\n    \"with_minimum_score\": \"80\",\n    \"release_within\": \"1year\"\n  },\n  \"active\": true,\n  \"created_at\": \"2023-11-28 17:51:53 +0530\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c83d8b0-d855-472a-8763-27a7a607bc46",
+              "name": "Not Modified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search_filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search_filter_slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Last-Modified",
+                  "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0aec0f13-7fd2-4c45-87de-b8575d44ef94",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search_filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search_filter_slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"400 Bad Request\",\n  \"errors\": [\n    \"'puppetlabs-apache4.5.0' is not a valid release slug\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0c229b7-31c7-444e-9264-7cfef614977d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search_filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search_filter_slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"404 Not Found\",\n  \"errors\": [\n    \"The requested resource could not be found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86607cce-973d-423a-80eb-88051055fe51",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search_filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search_filter_slug",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"409 Conflict\",\n  \"errors\": [\n    \"A release with the version specified in the metadata.json already exists for this module.\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3247594-05a8-4e30-8b4e-3f3d5788be0f",
+          "name": "Get user's search filters",
+          "request": {
+            "name": "Get user's search filters",
+            "description": {
+              "content": "Retrieve all search filters for the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "search_filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffe8bbab-a397-4712-aded-a96e0b8a5c68",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search_filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_search_filters\": [\n    {\n      \"id\": 1,\n      \"filter\": {\n        \"keyword\": \"apache\",\n        \"features\": {\n          \"premium\": true,\n          \"with_pdk\": null,\n          \"with_tasks\": null\n        },\n        \"endorsements\": {\n          \"partner\": true,\n          \"approved\": null,\n          \"supported\": null\n        },\n        \"compatibility\": {\n          \"pe_requirement\": \"2023.1\",\n          \"operating_system\": \"Windows\",\n          \"puppet_requirement\": \"8.0\",\n          \"operating_system_release\": \"2019\"\n        },\n        \"with_minimum_score\": \"80\",\n        \"release_within\": \"1year\"\n      },\n      \"active\": true,\n      \"created_at\": \"2023-11-28 17:51:53 +0530\"\n    },\n    {\n      \"id\": 2,\n      \"filter\": {\n        \"keyword\": \"sql\",\n        \"features\": {\n          \"premium\": true,\n          \"with_pdk\": null,\n          \"with_tasks\": null\n        },\n        \"endorsements\": {\n          \"partner\": true,\n          \"approved\": null,\n          \"supported\": null\n        },\n        \"compatibility\": {\n          \"pe_requirement\": \"2023.1\",\n          \"operating_system\": \"Windows\",\n          \"puppet_requirement\": \"8.0\",\n          \"operating_system_release\": \"2019\"\n        },\n        \"with_minimum_score\": \"80\",\n        \"release_within\": \"1year\"\n      },\n      \"active\": true,\n      \"created_at\": \"2023-11-28 17:51:53 +0530\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2d5a0d0-0265-4e58-a875-0b78f390adba",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search_filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"400 Bad Request\",\n  \"errors\": [\n    \"'puppetlabs-apache4.5.0' is not a valid release slug\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c10510a3-3772-428d-a4bf-9edfc56843eb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search_filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"401 Unauthorized\",\n  \"errors\": [\n    \"This endpoint requires a valid Authorization header\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e3088d9-8106-4dfe-9681-204cde8c44f5",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search_filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"404 Not Found\",\n  \"errors\": [\n    \"The requested resource could not be found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29c5594e-c9b1-4215-970e-4223e6dc8c10",
+          "name": "Delete search filter by ID",
+          "request": {
+            "name": "Delete search filter by ID",
+            "description": {
+              "content": "Delete user's search filter by ID for authenticated user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "search_filters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Search filter ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization: Bearer <api_key>"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "73fcf626-85ae-401b-a88f-a503f9feefce",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search_filters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Search filter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d23578c-119a-4ee0-8c73-e8319e469a93",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search_filters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Search filter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"403 Forbidden\",\n  \"errors\": [\n    \"The provided API key is invalid or has insufficient permissions for the requested operation\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5dca497b-0891-4219-ac0f-60faddb46649",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "search_filters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Search filter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"404 Not Found\",\n  \"errors\": [\n    \"The requested resource could not be found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://forgeapi.puppet.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d76d8e8f-b518-4c05-a929-a63250073938",
+    "name": "Puppet Forge v3 Module Operations Search Filter Operations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "## Introduction\nThe Puppet Forge API (hereafter referred to as the Forge API) provides quick access to all the\ndata on the Puppet Forge via a RESTful interface. Using the Forge API, you can write scripts and\ntools that interact with the Puppet Forge website.\n\nThe Forge API's current version is `v3`. It is considered regression-stable, meaning that the returned\ndata is guaranteed to include the fields described in the schemas on this page; however, additional data\nmight be added in the future and clients must ignore any properties they do not recognize.\n\n## OpenAPI Specification\nThe Puppet Forge v3 API is described by an\n[OpenAPI 3.0](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.0.md) formatted\nspecification file. The most up-to-date version of this specification file can be accessed at\n[https://forgeapi.puppet.com/v3/openapi.json](/v3/openapi.json).\n\n## Features\n* The API is accessed over HTTPS via either the `forgeapi.puppet.com` (IPv4 or IPv6). All data is returned in JSON\n  format.\n* Blank fields are included as `null`.\n* Nested resources may use an abbreviated representation. A link to the full representation for the\n  resource is always included.\n* All timestamps in JSON responses are returned in ISO 8601 format: `YYYY-MM-DD HH:MM:SS ±HHMM`.\n* The HTTP response headers include caching hints for conditional requests.\n\n## Concepts and Terminology\n* **Module**: Modules are self-contained bundles of code and data with a specific directory structure. Modules are identified by a combination of the author's username and the module's name, separated by a hyphen. For example: `puppetlabs-apache`\n* **Release**: A single, specific version of a module is called a Release. Releases are identified by a combination of the module identifier (see above) and the Release version, separated by a hyphen. For example: `puppetlabs-apache-4.0.0`\n\n## Errors\nThe Puppet Forge API follows [RFC 2616](https://tools.ietf.org/html/rfc2616) and\n[RFC 6585](https://tools.ietf.org/html/rfc6585).\n\nError responses are served with a `4xx` or `5xx` status code, and are sent as a JSON document with a content type\nof `application/json`. The error document contains the following top-level keys and values:\n\n  * `message`: a string value that summarizes the problem\n  * `errors`: a list (array) of strings containing additional details describing the underlying cause(s) of the\n    failure\n\nAn example error response is shown below:\n\n```json\n{\n  \"message\": \"400 Bad Request\",\n  \"errors\": [\n    \"Cannot parse request body as JSON\"\n  ]\n}\n```\n\n## User-Agent Required\nAll API requests must include a valid `User-Agent` header. Requests with no `User-Agent` header will\nbe rejected. The `User-Agent` header helps identify your application or library, so we can communicate\nwith you if necessary. If your use of the API is informal or personal, we recommend using your username\nas the value for the `User-Agent` header.\n\nUser-Agent headers are a list of one or more product descriptions, generally taking this form:\n\n```\n<name-without-spaces>/<version> (comments)\n```\n\nFor example, the following are all useful User-Agent values:\n\n```\nMyApplication/0.0.0 Her/0.6.8 Faraday/0.8.8 Ruby/1.9.3-p194 (i386-linux)\nMy-Library-Name/1.2.4\nmyusername\n```\n\n## Hostname Configuration\nMost tools that interact with the Forge API allow specification of the hostname to use. You can configure\na few common tools to use a specified hostname as follows:\n\nFor **Puppet Enterprise** users, in [r10k](https://puppet.com/docs/pe/latest/r10k_customize_config.html#r10k_configuring_forge_settings)\nor [Code Manager](https://puppet.com/docs/pe/latest/code_mgr_customizing.html#config_forge_settings), specify\n`forge_settings` in Hiera:\n```\npe_r10k::forge_settings:\n  baseurl: 'https://forgeapi.puppet.com'\n```\nor\n```\npuppet_enterprise::master::code_manager::forge_settings:\n  baseurl: 'https://forgeapi.puppet.com'\n```\n<br />\n\nIf you are an **open source Puppet** user using r10k, you'll need to [edit your r10k.yaml\ndirectly](https://github.com/puppetlabs/r10k/blob/main/doc/dynamic-environments/configuration.mkd#forge):\n```\nforge:\n  baseurl: 'https://forgeapi.puppet.com'\n```\nor set the appropriate class param for the [open source r10k module](https://forge.puppet.com/puppet/r10k#forge_settings):\n```\n$forge_settings = {\n  'baseurl' => 'https://forgeapi.puppet.com',\n}\n```\n<br />\n\nIn [**Bolt**](https://puppet.com/docs/bolt/latest/bolt_installing_modules.html#install-forge-modules-from-an-alternate-forge), set a `baseurl` for the Forge in `bolt-project.yaml`:\n```\nmodule-install:\n  forge:\n    baseurl: https://forgeapi.puppet.com\n```\n<br />\n\nUsing `puppet config`:\n```\n$ puppet config set module_repository https://forgeapi.puppet.com\n```\n",
+      "type": "text/plain"
+    }
+  }
+}

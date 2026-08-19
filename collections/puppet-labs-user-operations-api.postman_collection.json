@@ -1,0 +1,575 @@
+{
+  "item": [
+    {
+      "id": "bf140b89-823e-4af5-b41c-5b5b3193fb96",
+      "name": "User Operations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3cbc8ea2-6c38-49fa-875c-78ab40719e4a",
+          "name": "List users",
+          "request": {
+            "name": "List users",
+            "description": {
+              "content": "Provides information about Puppet Forge user accounts. By default, results are returned in alphabetical\norder by username and paginated with 20 users per page. It's also possible to sort by number of published\nreleases, total download counts for all the user's modules, or by the date of the user's latest release.\nAll parameters are optional.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "The numbers of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of items to skip before starting to collect the result set"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Desired order in which to return results"
+                },
+                {
+                  "disabled": false,
+                  "key": "with_html",
+                  "value": "<boolean>",
+                  "description": "Render markdown files (README, REFERENCE, etc.) to HTML before returning results"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>%20<string>",
+                  "description": "List of top level keys to include in response object, only applies to fields marked 'optional'"
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>%20<string>",
+                  "description": "List of top level keys to exclude from response object"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "If-Modified-Since",
+                "value": "<rfc2616 httpdate>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dfb33c3a-22af-4e36-9be2-ab1887c1474c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {\n    \"value\": \"<Error: Could not resolve allOf schema\"\n  },\n  \"results\": [\n    {\n      \"uri\": \"/v3/users/puppetlabs\",\n      \"slug\": \"puppetlabs\",\n      \"gravatar_id\": \"fdd009b7c1ec96e088b389f773e87aec\",\n      \"username\": \"puppetlabs\",\n      \"display_name\": \"Puppet\",\n      \"release_count\": 1619,\n      \"module_count\": 178,\n      \"created_at\": \"2010-05-19 05:46:26 -0700\",\n      \"updated_at\": \"2018-09-18 11:46:25 -0700\"\n    },\n    {\n      \"uri\": \"/v3/users/puppetlabs\",\n      \"slug\": \"puppetlabs\",\n      \"gravatar_id\": \"fdd009b7c1ec96e088b389f773e87aec\",\n      \"username\": \"puppetlabs\",\n      \"display_name\": \"Puppet\",\n      \"release_count\": 1619,\n      \"module_count\": 178,\n      \"created_at\": \"2010-05-19 05:46:26 -0700\",\n      \"updated_at\": \"2018-09-18 11:46:25 -0700\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6fcbc00-fbd3-4e78-9b51-11338d51acb5",
+              "name": "Not Modified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Last-Modified",
+                  "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6833126-8a3b-4798-a4ce-58b24e3d8ca8",
+          "name": "Fetch user",
+          "request": {
+            "name": "Fetch user",
+            "description": {
+              "content": "Returns data for a single User resource identified by the user's `slug` value.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "users",
+                ":user_slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with_html",
+                  "value": "<boolean>",
+                  "description": "Render markdown files (README, REFERENCE, etc.) to HTML before returning results"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>%20<string>",
+                  "description": "List of top level keys to include in response object, only applies to fields marked 'optional'"
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>%20<string>",
+                  "description": "List of top level keys to exclude from response object"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_slug",
+                  "description": "(Required) Unique textual identifier (slug) of the User resource to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "If-Modified-Since",
+                "value": "<rfc2616 httpdate>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c63a9a5-16ce-418d-b688-38a2712b7751",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    ":user_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the User resource to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uri\": \"/v3/users/puppetlabs\",\n  \"slug\": \"puppetlabs\",\n  \"gravatar_id\": \"fdd009b7c1ec96e088b389f773e87aec\",\n  \"username\": \"puppetlabs\",\n  \"display_name\": \"Puppet\",\n  \"release_count\": 1619,\n  \"module_count\": 178,\n  \"created_at\": \"2010-05-19 05:46:26 -0700\",\n  \"updated_at\": \"2018-09-18 11:46:25 -0700\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8bba5bb-a8eb-4e9c-954e-398dfc8fae79",
+              "name": "Not Modified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    ":user_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the User resource to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Last-Modified",
+                  "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5439257a-67d8-4a30-8dd0-a4f4eccbd267",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    ":user_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the User resource to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"400 Bad Request\",\n  \"errors\": [\n    \"'puppetlabs-apache4.5.0' is not a valid release slug\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26aab623-0f65-41ca-bae3-b4237292485a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    ":user_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the User resource to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"404 Not Found\",\n  \"errors\": [\n    \"The requested resource could not be found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://forgeapi.puppet.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e5a08a41-df84-4902-b2d7-0b822890f98f",
+    "name": "Puppet Forge v3 Module Operations User Operations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "## Introduction\nThe Puppet Forge API (hereafter referred to as the Forge API) provides quick access to all the\ndata on the Puppet Forge via a RESTful interface. Using the Forge API, you can write scripts and\ntools that interact with the Puppet Forge website.\n\nThe Forge API's current version is `v3`. It is considered regression-stable, meaning that the returned\ndata is guaranteed to include the fields described in the schemas on this page; however, additional data\nmight be added in the future and clients must ignore any properties they do not recognize.\n\n## OpenAPI Specification\nThe Puppet Forge v3 API is described by an\n[OpenAPI 3.0](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.0.md) formatted\nspecification file. The most up-to-date version of this specification file can be accessed at\n[https://forgeapi.puppet.com/v3/openapi.json](/v3/openapi.json).\n\n## Features\n* The API is accessed over HTTPS via either the `forgeapi.puppet.com` (IPv4 or IPv6). All data is returned in JSON\n  format.\n* Blank fields are included as `null`.\n* Nested resources may use an abbreviated representation. A link to the full representation for the\n  resource is always included.\n* All timestamps in JSON responses are returned in ISO 8601 format: `YYYY-MM-DD HH:MM:SS ±HHMM`.\n* The HTTP response headers include caching hints for conditional requests.\n\n## Concepts and Terminology\n* **Module**: Modules are self-contained bundles of code and data with a specific directory structure. Modules are identified by a combination of the author's username and the module's name, separated by a hyphen. For example: `puppetlabs-apache`\n* **Release**: A single, specific version of a module is called a Release. Releases are identified by a combination of the module identifier (see above) and the Release version, separated by a hyphen. For example: `puppetlabs-apache-4.0.0`\n\n## Errors\nThe Puppet Forge API follows [RFC 2616](https://tools.ietf.org/html/rfc2616) and\n[RFC 6585](https://tools.ietf.org/html/rfc6585).\n\nError responses are served with a `4xx` or `5xx` status code, and are sent as a JSON document with a content type\nof `application/json`. The error document contains the following top-level keys and values:\n\n  * `message`: a string value that summarizes the problem\n  * `errors`: a list (array) of strings containing additional details describing the underlying cause(s) of the\n    failure\n\nAn example error response is shown below:\n\n```json\n{\n  \"message\": \"400 Bad Request\",\n  \"errors\": [\n    \"Cannot parse request body as JSON\"\n  ]\n}\n```\n\n## User-Agent Required\nAll API requests must include a valid `User-Agent` header. Requests with no `User-Agent` header will\nbe rejected. The `User-Agent` header helps identify your application or library, so we can communicate\nwith you if necessary. If your use of the API is informal or personal, we recommend using your username\nas the value for the `User-Agent` header.\n\nUser-Agent headers are a list of one or more product descriptions, generally taking this form:\n\n```\n<name-without-spaces>/<version> (comments)\n```\n\nFor example, the following are all useful User-Agent values:\n\n```\nMyApplication/0.0.0 Her/0.6.8 Faraday/0.8.8 Ruby/1.9.3-p194 (i386-linux)\nMy-Library-Name/1.2.4\nmyusername\n```\n\n## Hostname Configuration\nMost tools that interact with the Forge API allow specification of the hostname to use. You can configure\na few common tools to use a specified hostname as follows:\n\nFor **Puppet Enterprise** users, in [r10k](https://puppet.com/docs/pe/latest/r10k_customize_config.html#r10k_configuring_forge_settings)\nor [Code Manager](https://puppet.com/docs/pe/latest/code_mgr_customizing.html#config_forge_settings), specify\n`forge_settings` in Hiera:\n```\npe_r10k::forge_settings:\n  baseurl: 'https://forgeapi.puppet.com'\n```\nor\n```\npuppet_enterprise::master::code_manager::forge_settings:\n  baseurl: 'https://forgeapi.puppet.com'\n```\n<br />\n\nIf you are an **open source Puppet** user using r10k, you'll need to [edit your r10k.yaml\ndirectly](https://github.com/puppetlabs/r10k/blob/main/doc/dynamic-environments/configuration.mkd#forge):\n```\nforge:\n  baseurl: 'https://forgeapi.puppet.com'\n```\nor set the appropriate class param for the [open source r10k module](https://forge.puppet.com/puppet/r10k#forge_settings):\n```\n$forge_settings = {\n  'baseurl' => 'https://forgeapi.puppet.com',\n}\n```\n<br />\n\nIn [**Bolt**](https://puppet.com/docs/bolt/latest/bolt_installing_modules.html#install-forge-modules-from-an-alternate-forge), set a `baseurl` for the Forge in `bolt-project.yaml`:\n```\nmodule-install:\n  forge:\n    baseurl: https://forgeapi.puppet.com\n```\n<br />\n\nUsing `puppet config`:\n```\n$ puppet config set module_repository https://forgeapi.puppet.com\n```\n",
+      "type": "text/plain"
+    }
+  }
+}

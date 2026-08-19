@@ -1,0 +1,1934 @@
+{
+  "item": [
+    {
+      "id": "c80aa734-0a18-48b5-af97-88b4fb4b0fd3",
+      "name": "Release Operations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3ff03cf4-78c0-4d8b-90ff-923f28e8555d",
+          "name": "Download module release",
+          "request": {
+            "name": "Download module release",
+            "description": {
+              "content": "Download a module release tarball\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "files",
+                ":filename"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "filename",
+                  "description": "(Required) Module release filename to be downloaded (e.g. \"puppetlabs-apache-2.0.0.tar.gz\")"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fae8f38-f19b-4a92-b733-85f8caee560b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "files",
+                    ":filename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Module release filename to be downloaded (e.g. \"puppetlabs-apache-2.0.0.tar.gz\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Indicates response should be treated as an attachment and suggests a filename which matches the requested tarball name",
+                  "key": "Content-Disposition",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28c0e872-0a52-41f5-a061-bca7bad9779e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "files",
+                    ":filename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Module release filename to be downloaded (e.g. \"puppetlabs-apache-2.0.0.tar.gz\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"400 Bad Request\",\n  \"errors\": [\n    \"'puppetlabs-apache4.5.0' is not a valid release slug\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e81c815-b843-4cbb-8fd2-82967ac9c793",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "files",
+                    ":filename"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "filename",
+                      "description": "(Required) Module release filename to be downloaded (e.g. \"puppetlabs-apache-2.0.0.tar.gz\")"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"404 Not Found\",\n  \"errors\": [\n    \"The requested resource could not be found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fae07744-de45-402f-933a-6bc2d638faec",
+          "name": "List module releases",
+          "request": {
+            "name": "List module releases",
+            "description": {
+              "content": "Returns a list of module releases meeting the specified search criteria and filters. Results are paginated.\nAll of the parameters are optional.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "releases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "The numbers of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of items to skip before starting to collect the result set"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Desired order in which to return results\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "module",
+                  "value": "<string>",
+                  "description": "Constrain results to releases for a given module"
+                },
+                {
+                  "disabled": false,
+                  "key": "owner",
+                  "value": "<string>",
+                  "description": "Constrain results to releases for any modules owned by the given user"
+                },
+                {
+                  "disabled": false,
+                  "key": "with_pdk",
+                  "value": "<boolean>",
+                  "description": "Constrain results to module releases created with\n[Puppet Development Kit](https://puppet.com/docs/pdk/latest/pdk.html)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "operatingsystem",
+                  "value": "<string>",
+                  "description": "Constrain results to module releases that explicitly support the given operating system, see\n[metadata.json documentation](https://puppet.com/docs/puppet/latest/modules_metadata.html#specifying-operating-system-compatibility) for more information about possible values\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "operatingsystemrelease",
+                  "value": "<string>",
+                  "description": "Constrain results to module releases that explicitly support the\ngiven release of the given operating system, see [metadata.json\ndocumentation](https://puppet.com/docs/puppet/latest/modules_metadata.html#specifying-operating-system-compatibility)\nfor more information about possible values. Requires `operatingsystem`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "pe_requirement",
+                  "value": "<semantic version range>",
+                  "description": "Constrain results to module releases that explicitly list a Puppet Enterprise version requirement in the given\n[semantic versioning range](https://puppet.com/docs/puppet/latest/modules_metadata.html#specifying-versions)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "puppet_requirement",
+                  "value": "<semantic version range>",
+                  "description": "Constrain results to module releases that explicitly list a Puppet version requirement in the given\n[semantic versioning range](https://puppet.com/docs/puppet/latest/modules_metadata.html#specifying-versions)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "module_groups",
+                  "value": "<string>%20<string>",
+                  "description": "Constrain results to releases for modules in any of the given module groups"
+                },
+                {
+                  "disabled": false,
+                  "key": "show_deleted",
+                  "value": "<boolean>",
+                  "description": "Include releases marked as \"deleted\" in results"
+                },
+                {
+                  "disabled": false,
+                  "key": "hide_deprecated",
+                  "value": "<boolean>",
+                  "description": "Exclude releases of deprecated modules from the results. Treats any value as true."
+                },
+                {
+                  "disabled": false,
+                  "key": "hide_contribution",
+                  "value": "<boolean>",
+                  "description": "Exclude releases of modules seeking contribution from the results. Treats any value as true."
+                },
+                {
+                  "disabled": false,
+                  "key": "with_html",
+                  "value": "<boolean>",
+                  "description": "Render markdown files (README, REFERENCE, etc.) to HTML before returning results"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>%20<string>",
+                  "description": "List of top level keys to include in response object, only applies to fields marked 'optional'"
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>%20<string>",
+                  "description": "List of top level keys to exclude from response object"
+                },
+                {
+                  "disabled": false,
+                  "key": "supported",
+                  "value": "<boolean>",
+                  "description": "Constrain results to releases for [Supported modules](https://forge.puppet.com/supported)\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "If-Modified-Since",
+                "value": "<rfc2616 httpdate>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c1adc18-c146-4d02-87b7-b7b84018325c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "module",
+                      "value": "puppetlabs-apache"
+                    },
+                    {
+                      "key": "owner",
+                      "value": "puppetlabs"
+                    },
+                    {
+                      "key": "with_pdk",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "operatingsystem",
+                      "value": "windows"
+                    },
+                    {
+                      "key": "operatingsystemrelease",
+                      "value": "2012 R2"
+                    },
+                    {
+                      "key": "pe_requirement",
+                      "value": "5.x"
+                    },
+                    {
+                      "key": "puppet_requirement",
+                      "value": "6.x"
+                    },
+                    {
+                      "key": "module_groups",
+                      "value": "<string>%20<string>"
+                    },
+                    {
+                      "key": "show_deleted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hide_deprecated",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hide_contribution",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    },
+                    {
+                      "key": "supported",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {\n    \"value\": \"<Error: Could not resolve allOf schema\"\n  },\n  \"results\": [\n    {\n      \"uri\": \"/v3/releases/puppetlabs-apache-4.0.0\",\n      \"slug\": \"puppetlabs-apache-4.0.0\",\n      \"module\": {\n        \"uri\": \"/v3/modules/puppetlabs-apache\",\n        \"slug\": \"puppetlabs-apache\",\n        \"name\": \"apache\",\n        \"deprecated_at\": null,\n        \"owner\": {\n          \"uri\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"slug\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"username\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"gravatar_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"version\": \"4.0.0\",\n      \"metadata\": {},\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"supported\": true,\n      \"pdk\": true,\n      \"validation_score\": 100,\n      \"file_uri\": \"https://FLNlPNPCKLMSINCIMryHnsIzEQuwrzQwm.uwzl1NP1fcIkxIOnHhHpAvh+pgAL\",\n      \"file_size\": 317119,\n      \"file_md5\": \"e579a02bd16f9dec56018d407be7ab32\",\n      \"file_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n      \"downloads\": 12782,\n      \"readme\": \"string\",\n      \"changelog\": \"string\",\n      \"license\": \"string\",\n      \"reference\": \"string\",\n      \"docs\": {},\n      \"pe_compatibility\": [\n        \"string\",\n        \"string\"\n      ],\n      \"tasks\": [\n        {\n          \"name\": \"init\",\n          \"executable\": \"init.sh\",\n          \"executables\": [\n            \"init.sh\",\n            \"init.ps1\"\n          ],\n          \"description\": \"Allows you to perform apache service functions\",\n          \"metadata\": {}\n        },\n        {\n          \"name\": \"init\",\n          \"executable\": \"init.sh\",\n          \"executables\": [\n            \"init.sh\",\n            \"init.ps1\"\n          ],\n          \"description\": \"Allows you to perform apache service functions\",\n          \"metadata\": {}\n        }\n      ],\n      \"plans\": [\n        {\n          \"uri\": \"/v3/releases/puppetlabs-lvm-1.4.0/plans/lvm::expand\",\n          \"name\": \"lvm::expand\",\n          \"private\": true\n        },\n        {\n          \"uri\": \"/v3/releases/puppetlabs-lvm-1.4.0/plans/lvm::expand\",\n          \"name\": \"lvm::expand\",\n          \"private\": true\n        }\n      ],\n      \"created_at\": \"2019-01-10 05:18:00 -0800\",\n      \"updated_at\": \"2019-01-10 05:20:17 -0800\",\n      \"deleted_at\": null,\n      \"deleted_for\": null\n    },\n    {\n      \"uri\": \"/v3/releases/puppetlabs-apache-4.0.0\",\n      \"slug\": \"puppetlabs-apache-4.0.0\",\n      \"module\": {\n        \"uri\": \"/v3/modules/puppetlabs-apache\",\n        \"slug\": \"puppetlabs-apache\",\n        \"name\": \"apache\",\n        \"deprecated_at\": null,\n        \"owner\": {\n          \"uri\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"slug\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"username\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"gravatar_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"version\": \"4.0.0\",\n      \"metadata\": {},\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"supported\": true,\n      \"pdk\": true,\n      \"validation_score\": 100,\n      \"file_uri\": \"https://u.hwcfHaQR0AO0PoOUxVSSl8iNsgq6qCFJcZ3D.Oihx.2idzOgaWF\",\n      \"file_size\": 317119,\n      \"file_md5\": \"e579a02bd16f9dec56018d407be7ab32\",\n      \"file_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n      \"downloads\": 12782,\n      \"readme\": \"string\",\n      \"changelog\": \"string\",\n      \"license\": \"string\",\n      \"reference\": \"string\",\n      \"docs\": {},\n      \"pe_compatibility\": [\n        \"string\",\n        \"string\"\n      ],\n      \"tasks\": [\n        {\n          \"name\": \"init\",\n          \"executable\": \"init.sh\",\n          \"executables\": [\n            \"init.sh\",\n            \"init.ps1\"\n          ],\n          \"description\": \"Allows you to perform apache service functions\",\n          \"metadata\": {}\n        },\n        {\n          \"name\": \"init\",\n          \"executable\": \"init.sh\",\n          \"executables\": [\n            \"init.sh\",\n            \"init.ps1\"\n          ],\n          \"description\": \"Allows you to perform apache service functions\",\n          \"metadata\": {}\n        }\n      ],\n      \"plans\": [\n        {\n          \"uri\": \"/v3/releases/puppetlabs-lvm-1.4.0/plans/lvm::expand\",\n          \"name\": \"lvm::expand\",\n          \"private\": true\n        },\n        {\n          \"uri\": \"/v3/releases/puppetlabs-lvm-1.4.0/plans/lvm::expand\",\n          \"name\": \"lvm::expand\",\n          \"private\": false\n        }\n      ],\n      \"created_at\": \"2019-01-10 05:18:00 -0800\",\n      \"updated_at\": \"2019-01-10 05:20:17 -0800\",\n      \"deleted_at\": null,\n      \"deleted_for\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2ac255f-cc85-45d3-86d6-042438199331",
+              "name": "Not Modified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "module",
+                      "value": "puppetlabs-apache"
+                    },
+                    {
+                      "key": "owner",
+                      "value": "puppetlabs"
+                    },
+                    {
+                      "key": "with_pdk",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "operatingsystem",
+                      "value": "windows"
+                    },
+                    {
+                      "key": "operatingsystemrelease",
+                      "value": "2012 R2"
+                    },
+                    {
+                      "key": "pe_requirement",
+                      "value": "5.x"
+                    },
+                    {
+                      "key": "puppet_requirement",
+                      "value": "6.x"
+                    },
+                    {
+                      "key": "module_groups",
+                      "value": "<string>%20<string>"
+                    },
+                    {
+                      "key": "show_deleted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hide_deprecated",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hide_contribution",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    },
+                    {
+                      "key": "supported",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Last-Modified",
+                  "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df0a0548-b480-40a4-a4ae-5ca3b251f325",
+          "name": "Create module release",
+          "request": {
+            "name": "Create module release",
+            "description": {
+              "content": "Publish a new module or new release of an existing module\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "releases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization: Bearer <api_key>"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3e46253e-b4ab-403d-9451-8c402da3b11d",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uri\": \"/v3/releases/puppetlabs-apache-4.0.0\",\n  \"slug\": \"puppetlabs-apache-4.0.0\",\n  \"file_uri\": \"http://GSYazUaXN.ytou2ZKOF3bGXGwRTu9WrF1ZgelqkBgDliuf\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2edc9b3-9036-44fd-8ea7-687f73712e13",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"400 Bad Request\",\n  \"errors\": [\n    \"'puppetlabs-apache4.5.0' is not a valid release slug\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e78fc36-2cee-47ef-bed3-904dc845e214",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"401 Unauthorized\",\n  \"errors\": [\n    \"This endpoint requires a valid Authorization header\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6cc1d7a4-f6cf-4cbe-915b-bdf08fd4cfdc",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"403 Forbidden\",\n  \"errors\": [\n    \"The provided API key is invalid or has insufficient permissions for the requested operation\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17a519db-d013-499f-9d04-107ba9984071",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"409 Conflict\",\n  \"errors\": [\n    \"A release with the version specified in the metadata.json already exists for this module.\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc576810-5eb1-4929-abc8-a21baf2d21b4",
+          "name": "Fetch module release",
+          "request": {
+            "name": "Fetch module release",
+            "description": {
+              "content": "Returns data for a single module Release resource identified by the module release's `slug` value.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "releases",
+                ":release_slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with_html",
+                  "value": "<boolean>",
+                  "description": "Render markdown files (README, REFERENCE, etc.) to HTML before returning results"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_fields",
+                  "value": "<string>%20<string>",
+                  "description": "List of top level keys to include in response object, only applies to fields marked 'optional'"
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_fields",
+                  "value": "<string>%20<string>",
+                  "description": "List of top level keys to exclude from response object"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "release_slug",
+                  "description": "(Required) Unique textual identifier (slug) of the module Release resource to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "If-Modified-Since",
+                "value": "<rfc2616 httpdate>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32d86f0d-c19c-48e2-9327-47212ab1e2f9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module Release resource to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uri\": \"/v3/releases/puppetlabs-apache-4.0.0\",\n  \"slug\": \"puppetlabs-apache-4.0.0\",\n  \"module\": {\n    \"uri\": \"/v3/modules/puppetlabs-apache\",\n    \"slug\": \"puppetlabs-apache\",\n    \"name\": \"apache\",\n    \"deprecated_at\": null,\n    \"owner\": {\n      \"uri\": \"/v3/users/puppetlabs\",\n      \"slug\": \"puppetlabs\",\n      \"username\": \"puppetlabs\",\n      \"gravatar_id\": \"fdd009b7c1ec96e088b389f773e87aec\"\n    }\n  },\n  \"version\": \"4.0.0\",\n  \"metadata\": {},\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"supported\": true,\n  \"pdk\": true,\n  \"validation_score\": 100,\n  \"file_uri\": \"https://QNJzTsC.dsKU8qqdeYEHISUoWXOcA-ScDssLno9L9yLliGGhZXc.afPhxG,VaK+AtENhHya3VlIpt\",\n  \"file_size\": 317119,\n  \"file_md5\": \"e579a02bd16f9dec56018d407be7ab32\",\n  \"file_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n  \"downloads\": 12782,\n  \"readme\": \"string\",\n  \"changelog\": \"string\",\n  \"license\": \"string\",\n  \"reference\": \"string\",\n  \"docs\": {},\n  \"pe_compatibility\": [\n    \"string\",\n    \"string\"\n  ],\n  \"tasks\": [\n    {\n      \"name\": \"init\",\n      \"executable\": \"init.sh\",\n      \"executables\": [\n        \"init.sh\",\n        \"init.ps1\"\n      ],\n      \"description\": \"Allows you to perform apache service functions\",\n      \"metadata\": {}\n    },\n    {\n      \"name\": \"init\",\n      \"executable\": \"init.sh\",\n      \"executables\": [\n        \"init.sh\",\n        \"init.ps1\"\n      ],\n      \"description\": \"Allows you to perform apache service functions\",\n      \"metadata\": {}\n    }\n  ],\n  \"plans\": [\n    {\n      \"uri\": \"/v3/releases/puppetlabs-lvm-1.4.0/plans/lvm::expand\",\n      \"name\": \"lvm::expand\",\n      \"private\": true\n    },\n    {\n      \"uri\": \"/v3/releases/puppetlabs-lvm-1.4.0/plans/lvm::expand\",\n      \"name\": \"lvm::expand\",\n      \"private\": false\n    }\n  ],\n  \"created_at\": \"2019-01-10 05:18:00 -0800\",\n  \"updated_at\": \"2019-01-10 05:20:17 -0800\",\n  \"deleted_at\": null,\n  \"deleted_for\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c77db63f-e143-43f8-ace5-f73ce422a4fd",
+              "name": "Not Modified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module Release resource to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Modified",
+              "code": 304,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Last-Modified",
+                  "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb492eb1-96c1-4b1c-a4f6-0dddfc2a9957",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module Release resource to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"400 Bad Request\",\n  \"errors\": [\n    \"'puppetlabs-apache4.5.0' is not a valid release slug\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50989093-4bf7-4ea0-84a7-be6e672dec1c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with_html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "include_fields",
+                      "value": "docs"
+                    },
+                    {
+                      "key": "exclude_fields",
+                      "value": "readme%20changelog%20license%20reference"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module Release resource to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "If-Modified-Since",
+                    "value": "Mon, 19 Feb 2019 10:15:08 GMT",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"404 Not Found\",\n  \"errors\": [\n    \"The requested resource could not be found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0f910c3-601a-44ea-a9dd-0fd420497c88",
+          "name": "Delete module release",
+          "request": {
+            "name": "Delete module release",
+            "description": {
+              "content": "Perform a soft delete of a module release, identified by the module release's `slug` value. The release will still be available for direct download from it's `/v3/files` endpoint, but will not be readily available in the Forge web interface.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "releases",
+                ":release_slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "reason",
+                  "value": "<string>",
+                  "description": "(Required) Reason for deletion"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "release_slug",
+                  "description": "(Required) Unique textual identifier (slug) of the module release to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization: Bearer <api_key>"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e497ae5a-58ac-480f-890f-2b7673d58a30",
+              "name": "No Content (the release was deleted successfully)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reason",
+                      "value": "bugs"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module release to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "059f68c0-373d-4b07-888c-aa220c3124fe",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reason",
+                      "value": "bugs"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module release to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"400 Bad Request\",\n  \"errors\": [\n    \"'puppetlabs-apache4.5.0' is not a valid release slug\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15b5450e-53b3-4d90-a07a-d4ce3ba94d45",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reason",
+                      "value": "bugs"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module release to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"401 Unauthorized\",\n  \"errors\": [\n    \"This endpoint requires a valid Authorization header\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2949efcb-ad82-444a-80ed-02a845a2975e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reason",
+                      "value": "bugs"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module release to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"403 Forbidden\",\n  \"errors\": [\n    \"The provided API key is invalid or has insufficient permissions for the requested operation\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0da293f-c966-48fc-8e22-aac9bf40631a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "reason",
+                      "value": "bugs"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module release to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization: Bearer <api_key>",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"404 Not Found\",\n  \"errors\": [\n    \"The requested resource could not be found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b03c31e4-198b-4d71-a64f-bb8c24b89364",
+          "name": "List module release plans",
+          "request": {
+            "name": "List module release plans",
+            "description": {
+              "content": "Returns a paginated list of all plans from the module release identified by the `release_slug` name. The `release_slug` is composed of the hyphenated module author, name, and version number (example: `puppetlabs-lvm-1.4.0`).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "releases",
+                ":release_slug",
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "release_slug",
+                  "description": "(Required) Unique textual identifier (slug) of the module Release resource to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58e52704-2a96-4e61-bfb5-ad251e92726d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module Release resource to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {\n    \"value\": \"<Error: Could not resolve allOf schema\"\n  },\n  \"results\": [\n    {\n      \"uri\": \"/v3/releases/puppetlabs-lvm-1.4.0/plans/lvm::expand\",\n      \"name\": \"lvm::expand\",\n      \"filename\": \"plans/expand.pp\",\n      \"plan_metadata\": {\n        \"name\": \"lvm::expand\",\n        \"file\": \"plans/expand.pp\",\n        \"line\": 15,\n        \"private\": true,\n        \"source\": \"plan lvm::expand (\\n  String...\",\n        \"defaults\": {\n          \"resize_fs\": \"true\"\n        },\n        \"docstring\": {\n          \"tags\": [\n            {\n              \"name\": \"resize_fs\",\n              \"text\": \"Whether to resize the filesystem\",\n              \"types\": [\n                \"Boolean\",\n                \"Boolean\"\n              ],\n              \"tag_name\": \"param\"\n            },\n            {\n              \"name\": \"resize_fs\",\n              \"text\": \"Whether to resize the filesystem\",\n              \"types\": [\n                \"Boolean\",\n                \"Boolean\"\n              ],\n              \"tag_name\": \"param\"\n            }\n          ],\n          \"text\": \"This plan expands storage on servers using LVM...\"\n        }\n      },\n      \"private\": false\n    },\n    {\n      \"uri\": \"/v3/releases/puppetlabs-lvm-1.4.0/plans/lvm::expand\",\n      \"name\": \"lvm::expand\",\n      \"filename\": \"plans/expand.pp\",\n      \"plan_metadata\": {\n        \"name\": \"lvm::expand\",\n        \"file\": \"plans/expand.pp\",\n        \"line\": 15,\n        \"private\": false,\n        \"source\": \"plan lvm::expand (\\n  String...\",\n        \"defaults\": {\n          \"resize_fs\": \"true\"\n        },\n        \"docstring\": {\n          \"tags\": [\n            {\n              \"name\": \"resize_fs\",\n              \"text\": \"Whether to resize the filesystem\",\n              \"types\": [\n                \"Boolean\",\n                \"Boolean\"\n              ],\n              \"tag_name\": \"param\"\n            },\n            {\n              \"name\": \"resize_fs\",\n              \"text\": \"Whether to resize the filesystem\",\n              \"types\": [\n                \"Boolean\",\n                \"Boolean\"\n              ],\n              \"tag_name\": \"param\"\n            }\n          ],\n          \"text\": \"This plan expands storage on servers using LVM...\"\n        }\n      },\n      \"private\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfac7634-6ed2-4acf-a258-21826f4c57e6",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module Release resource to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"404 Not Found\",\n  \"errors\": [\n    \"The requested resource could not be found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3025993-7f38-470d-ade2-e7fafad0d3ea",
+          "name": "Fetch module release plan",
+          "request": {
+            "name": "Fetch module release plan",
+            "description": {
+              "content": "Returns a summary of the given plan from the module release identified by the `release_slug` name. The `release_slug` is composed of the hyphenated module author, name, and version number (example: `puppetlabs-lvm-1.4.0`). The `plan_name` should be the full name including the module name (example: `lvm::expand`).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "releases",
+                ":release_slug",
+                "plans",
+                ":plan_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "release_slug",
+                  "description": "(Required) Unique textual identifier (slug) of the module Release resource to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "plan_name",
+                  "description": "(Required) Full name of desired plan, including module name and namespaces"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8276ddfd-ce25-447f-91ed-c23f79228f28",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug",
+                    "plans",
+                    ":plan_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module Release resource to retrieve"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plan_name",
+                      "description": "(Required) Full name of desired plan, including module name and namespaces"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uri\": \"/v3/releases/puppetlabs-lvm-1.4.0/plans/lvm::expand\",\n  \"name\": \"lvm::expand\",\n  \"filename\": \"plans/expand.pp\",\n  \"plan_metadata\": {\n    \"name\": \"lvm::expand\",\n    \"file\": \"plans/expand.pp\",\n    \"line\": 15,\n    \"private\": false,\n    \"source\": \"plan lvm::expand (\\n  String...\",\n    \"defaults\": {\n      \"resize_fs\": \"true\"\n    },\n    \"docstring\": {\n      \"tags\": [\n        {\n          \"name\": \"resize_fs\",\n          \"text\": \"Whether to resize the filesystem\",\n          \"types\": [\n            \"Boolean\",\n            \"Boolean\"\n          ],\n          \"tag_name\": \"param\"\n        },\n        {\n          \"name\": \"resize_fs\",\n          \"text\": \"Whether to resize the filesystem\",\n          \"types\": [\n            \"Boolean\",\n            \"Boolean\"\n          ],\n          \"tag_name\": \"param\"\n        }\n      ],\n      \"text\": \"This plan expands storage on servers using LVM...\"\n    }\n  },\n  \"private\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41ca5f14-99be-4659-a479-b9b8990d20fe",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "releases",
+                    ":release_slug",
+                    "plans",
+                    ":plan_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "release_slug",
+                      "description": "(Required) Unique textual identifier (slug) of the module Release resource to retrieve"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plan_name",
+                      "description": "(Required) Full name of desired plan, including module name and namespaces"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"404 Not Found\",\n  \"errors\": [\n    \"The requested resource could not be found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://forgeapi.puppet.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2eb84ecc-50dd-415a-8201-aefb6a38467c",
+    "name": "Puppet Forge v3 Module Operations Release Operations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "## Introduction\nThe Puppet Forge API (hereafter referred to as the Forge API) provides quick access to all the\ndata on the Puppet Forge via a RESTful interface. Using the Forge API, you can write scripts and\ntools that interact with the Puppet Forge website.\n\nThe Forge API's current version is `v3`. It is considered regression-stable, meaning that the returned\ndata is guaranteed to include the fields described in the schemas on this page; however, additional data\nmight be added in the future and clients must ignore any properties they do not recognize.\n\n## OpenAPI Specification\nThe Puppet Forge v3 API is described by an\n[OpenAPI 3.0](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.0.md) formatted\nspecification file. The most up-to-date version of this specification file can be accessed at\n[https://forgeapi.puppet.com/v3/openapi.json](/v3/openapi.json).\n\n## Features\n* The API is accessed over HTTPS via either the `forgeapi.puppet.com` (IPv4 or IPv6). All data is returned in JSON\n  format.\n* Blank fields are included as `null`.\n* Nested resources may use an abbreviated representation. A link to the full representation for the\n  resource is always included.\n* All timestamps in JSON responses are returned in ISO 8601 format: `YYYY-MM-DD HH:MM:SS ±HHMM`.\n* The HTTP response headers include caching hints for conditional requests.\n\n## Concepts and Terminology\n* **Module**: Modules are self-contained bundles of code and data with a specific directory structure. Modules are identified by a combination of the author's username and the module's name, separated by a hyphen. For example: `puppetlabs-apache`\n* **Release**: A single, specific version of a module is called a Release. Releases are identified by a combination of the module identifier (see above) and the Release version, separated by a hyphen. For example: `puppetlabs-apache-4.0.0`\n\n## Errors\nThe Puppet Forge API follows [RFC 2616](https://tools.ietf.org/html/rfc2616) and\n[RFC 6585](https://tools.ietf.org/html/rfc6585).\n\nError responses are served with a `4xx` or `5xx` status code, and are sent as a JSON document with a content type\nof `application/json`. The error document contains the following top-level keys and values:\n\n  * `message`: a string value that summarizes the problem\n  * `errors`: a list (array) of strings containing additional details describing the underlying cause(s) of the\n    failure\n\nAn example error response is shown below:\n\n```json\n{\n  \"message\": \"400 Bad Request\",\n  \"errors\": [\n    \"Cannot parse request body as JSON\"\n  ]\n}\n```\n\n## User-Agent Required\nAll API requests must include a valid `User-Agent` header. Requests with no `User-Agent` header will\nbe rejected. The `User-Agent` header helps identify your application or library, so we can communicate\nwith you if necessary. If your use of the API is informal or personal, we recommend using your username\nas the value for the `User-Agent` header.\n\nUser-Agent headers are a list of one or more product descriptions, generally taking this form:\n\n```\n<name-without-spaces>/<version> (comments)\n```\n\nFor example, the following are all useful User-Agent values:\n\n```\nMyApplication/0.0.0 Her/0.6.8 Faraday/0.8.8 Ruby/1.9.3-p194 (i386-linux)\nMy-Library-Name/1.2.4\nmyusername\n```\n\n## Hostname Configuration\nMost tools that interact with the Forge API allow specification of the hostname to use. You can configure\na few common tools to use a specified hostname as follows:\n\nFor **Puppet Enterprise** users, in [r10k](https://puppet.com/docs/pe/latest/r10k_customize_config.html#r10k_configuring_forge_settings)\nor [Code Manager](https://puppet.com/docs/pe/latest/code_mgr_customizing.html#config_forge_settings), specify\n`forge_settings` in Hiera:\n```\npe_r10k::forge_settings:\n  baseurl: 'https://forgeapi.puppet.com'\n```\nor\n```\npuppet_enterprise::master::code_manager::forge_settings:\n  baseurl: 'https://forgeapi.puppet.com'\n```\n<br />\n\nIf you are an **open source Puppet** user using r10k, you'll need to [edit your r10k.yaml\ndirectly](https://github.com/puppetlabs/r10k/blob/main/doc/dynamic-environments/configuration.mkd#forge):\n```\nforge:\n  baseurl: 'https://forgeapi.puppet.com'\n```\nor set the appropriate class param for the [open source r10k module](https://forge.puppet.com/puppet/r10k#forge_settings):\n```\n$forge_settings = {\n  'baseurl' => 'https://forgeapi.puppet.com',\n}\n```\n<br />\n\nIn [**Bolt**](https://puppet.com/docs/bolt/latest/bolt_installing_modules.html#install-forge-modules-from-an-alternate-forge), set a `baseurl` for the Forge in `bolt-project.yaml`:\n```\nmodule-install:\n  forge:\n    baseurl: https://forgeapi.puppet.com\n```\n<br />\n\nUsing `puppet config`:\n```\n$ puppet config set module_repository https://forgeapi.puppet.com\n```\n",
+      "type": "text/plain"
+    }
+  }
+}

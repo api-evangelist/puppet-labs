@@ -1,0 +1,303 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Puppet Forge v3 Module Operations Release Operations API",
+    "version": "29"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Release Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download module release",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://forgeapi.puppet.com/v3/files/:filename",
+            "params": [
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path",
+                "description": "Module release filename to be downloaded (e.g. \"puppetlabs-apache-2.0.0.tar.gz\")"
+              }
+            ]
+          },
+          "docs": "Download a module release tarball\n"
+        },
+        {
+          "info": {
+            "name": "List module releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://forgeapi.puppet.com/v3/releases",
+            "headers": [
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The numbers of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to skip before starting to collect the result set"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "Desired order in which to return results\n"
+              },
+              {
+                "name": "module",
+                "value": "puppetlabs-apache",
+                "type": "query",
+                "description": "Constrain results to releases for a given module"
+              },
+              {
+                "name": "owner",
+                "value": "puppetlabs",
+                "type": "query",
+                "description": "Constrain results to releases for any modules owned by the given user"
+              },
+              {
+                "name": "with_pdk",
+                "value": "",
+                "type": "query",
+                "description": "Constrain results to module releases created with\n[Puppet Development Kit](https://puppet.com/docs/pdk/latest/pdk.html)\n"
+              },
+              {
+                "name": "operatingsystem",
+                "value": "windows",
+                "type": "query",
+                "description": "Constrain results to module releases that explicitly support the given operating system, see\n[metadata.json documentation](https://puppet.com/docs/puppet/latest/modules_metadata.html#specifying-operating-system-compatibility) for more information about possible values\n"
+              },
+              {
+                "name": "operatingsystemrelease",
+                "value": "2012 R2",
+                "type": "query",
+                "description": "Constrain results to module releases that explicitly support the\ngiven release of the given operating system, see [metadata.json\ndocumentation](https://puppet.com/docs/puppet/latest/modules_metadata.html#specifying-operating-system-compatibility)\nfor more information about possible values. Requires `operatingsystem`.\n"
+              },
+              {
+                "name": "pe_requirement",
+                "value": "5.x",
+                "type": "query",
+                "description": "Constrain results to module releases that explicitly list a Puppet Enterprise version requirement in the given\n[semantic versioning range](https://puppet.com/docs/puppet/latest/modules_metadata.html#specifying-versions)\n"
+              },
+              {
+                "name": "puppet_requirement",
+                "value": "6.x",
+                "type": "query",
+                "description": "Constrain results to module releases that explicitly list a Puppet version requirement in the given\n[semantic versioning range](https://puppet.com/docs/puppet/latest/modules_metadata.html#specifying-versions)\n"
+              },
+              {
+                "name": "module_groups",
+                "value": "base+pe_only",
+                "type": "query",
+                "description": "Constrain results to releases for modules in any of the given module groups"
+              },
+              {
+                "name": "show_deleted",
+                "value": "",
+                "type": "query",
+                "description": "Include releases marked as \"deleted\" in results"
+              },
+              {
+                "name": "hide_deprecated",
+                "value": "",
+                "type": "query",
+                "description": "Exclude releases of deprecated modules from the results. Treats any value as true."
+              },
+              {
+                "name": "hide_contribution",
+                "value": "",
+                "type": "query",
+                "description": "Exclude releases of modules seeking contribution from the results. Treats any value as true."
+              },
+              {
+                "name": "with_html",
+                "value": "",
+                "type": "query",
+                "description": "Render markdown files (README, REFERENCE, etc.) to HTML before returning results"
+              },
+              {
+                "name": "include_fields",
+                "value": "docs",
+                "type": "query",
+                "description": "List of top level keys to include in response object, only applies to fields marked 'optional'"
+              },
+              {
+                "name": "exclude_fields",
+                "value": "readme,changelog,license,reference",
+                "type": "query",
+                "description": "List of top level keys to exclude from response object"
+              },
+              {
+                "name": "supported",
+                "value": "",
+                "type": "query",
+                "description": "Constrain results to releases for [Supported modules](https://forge.puppet.com/supported)\n"
+              }
+            ]
+          },
+          "docs": "Returns a list of module releases meeting the specified search criteria and filters. Results are paginated.\nAll of the parameters are optional.\n"
+        },
+        {
+          "info": {
+            "name": "Create module release",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://forgeapi.puppet.com/v3/releases",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization: Bearer <api_key>",
+              "value": "{{Authorization: Bearer <api_key>}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Publish a new module or new release of an existing module\n"
+        },
+        {
+          "info": {
+            "name": "Fetch module release",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://forgeapi.puppet.com/v3/releases/:release_slug",
+            "headers": [
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "release_slug",
+                "value": "puppetlabs-apache-4.0.0",
+                "type": "path",
+                "description": "Unique textual identifier (slug) of the module Release resource to retrieve"
+              },
+              {
+                "name": "with_html",
+                "value": "",
+                "type": "query",
+                "description": "Render markdown files (README, REFERENCE, etc.) to HTML before returning results"
+              },
+              {
+                "name": "include_fields",
+                "value": "docs",
+                "type": "query",
+                "description": "List of top level keys to include in response object, only applies to fields marked 'optional'"
+              },
+              {
+                "name": "exclude_fields",
+                "value": "readme,changelog,license,reference",
+                "type": "query",
+                "description": "List of top level keys to exclude from response object"
+              }
+            ]
+          },
+          "docs": "Returns data for a single module Release resource identified by the module release's `slug` value.\n"
+        },
+        {
+          "info": {
+            "name": "Delete module release",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://forgeapi.puppet.com/v3/releases/:release_slug",
+            "params": [
+              {
+                "name": "release_slug",
+                "value": "puppetlabs-apache-4.0.0",
+                "type": "path",
+                "description": "Unique textual identifier (slug) of the module release to delete"
+              },
+              {
+                "name": "reason",
+                "value": "bugs",
+                "type": "query",
+                "description": "Reason for deletion"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization: Bearer <api_key>",
+              "value": "{{Authorization: Bearer <api_key>}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Perform a soft delete of a module release, identified by the module release's `slug` value. The release will still be available for direct download from it's `/v3/files` endpoint, but will not be readily available in the Forge web interface.\n"
+        },
+        {
+          "info": {
+            "name": "List module release plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://forgeapi.puppet.com/v3/releases/:release_slug/plans",
+            "params": [
+              {
+                "name": "release_slug",
+                "value": "puppetlabs-apache-4.0.0",
+                "type": "path",
+                "description": "Unique textual identifier (slug) of the module Release resource to retrieve"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all plans from the module release identified by the `release_slug` name. The `release_slug` is composed of the hyphenated module author, name, and version number (example: `puppetlabs-lvm-1.4.0`).\n"
+        },
+        {
+          "info": {
+            "name": "Fetch module release plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://forgeapi.puppet.com/v3/releases/:release_slug/plans/:plan_name",
+            "params": [
+              {
+                "name": "release_slug",
+                "value": "puppetlabs-lvm-1.4.0",
+                "type": "path",
+                "description": "Unique textual identifier (slug) of the module Release resource to retrieve"
+              },
+              {
+                "name": "plan_name",
+                "value": "lvm::expand",
+                "type": "path",
+                "description": "Full name of desired plan, including module name and namespaces"
+              }
+            ]
+          },
+          "docs": "Returns a summary of the given plan from the module release identified by the `release_slug` name. The `release_slug` is composed of the hyphenated module author, name, and version number (example: `puppetlabs-lvm-1.4.0`). The `plan_name` should be the full name including the module name (example: `lvm::expand`).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
